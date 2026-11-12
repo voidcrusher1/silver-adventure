@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LTO Reviewers: Non-professional Code A, A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<span class="eyebrow">Code A &middot; A1</span>
+<h1>LTO reviewers</h1>
+<p class="sub">Practice quizzes for the non-professional motorcycle license. Your progress saves automatically on this device.</p>
+<div class="list" id="list">
+  <div class="card" data-id="part1" data-total="60" data-pass="48">
+    <span class="badge" data-badge>Not started</span>
+    <h2>Driving license reviewer, Part 1</h2>
+    <p>60 questions with traffic sign pictures and explanations. Passing score: 48/60.</p>
+    <div class="prog-row"><i><u data-bar style="width:0%"></u></i><span data-label>0 / 60 practiced</span></div>
+    <a class="btn primary" href="part1/" data-cta>Start Part 1</a>
+  </div>
+  <div class="card" data-id="part2" data-total="60" data-pass="48">
+    <span class="badge" data-badge>Not started</span>
+    <h2>Driving license reviewer, Part 2</h2>
+    <p>60 more questions with traffic sign pictures and explanations. Passing score: 48/60.</p>
+    <div class="prog-row"><i><u data-bar style="width:0%"></u></i><span data-label>0 / 60 practiced</span></div>
+    <a class="btn primary" href="part2/" data-cta>Start Part 2</a>
+  </div>
+</div>
+<p class="note">Study aid only. Check answers against the official LTO handbook. Clues, skips and analytics are saved per quiz, per device &mdash; see the bottom of this page for how to keep that data safe or sync it across devices.</p>
+<p class="note" id="saveNote">Your stats live in this browser's local storage. They stay as long as you don't clear browsing data, and they won't follow you to a different phone or browser &mdash; see the README for a free way to sync them everywhere.</p>
+</main>
+<script>
+document.querySelectorAll('#list .card').forEach(card=>{
+  const id=card.dataset.id, total=+card.dataset.total, pass=+card.dataset.pass;
+  let S=null; try{S=JSON.parse(localStorage.getItem('rev.stats.'+id))}catch(e){}
+  const badge=card.querySelector('[data-badge]'), bar=card.querySelector('[data-bar]'), label=card.querySelector('[data-label]'), cta=card.querySelector('[data-cta]');
+  if(!S || !S.q || !Object.keys(S.q).length){ return; }
+  const practiced=Object.values(S.q).filter(q=>q.a>0).length;
+  bar.style.width=Math.round(practiced/total*100)+'%';
+  label.textContent=practiced+' / '+total+' practiced';
+  if(S.passed){ badge.textContent='\u2705 Passed before'; badge.classList.add('pass'); cta.textContent='Review again'; }
+  else if(practiced>0){ badge.textContent='In progress'; badge.classList.add('started'); cta.textContent='Continue'; if(S.best) label.textContent+=' \u2014 best '+S.best+'/'+total; }
+});
+</script>
+</body>
+</html>

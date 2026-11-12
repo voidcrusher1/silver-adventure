@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Driving License Reviewer Part 2: Code A, A1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<header class="head">
+  <a class="back-link" href="../">&larr; All reviewers</a>
+  <div class="title-row">
+    <div>
+      <span class="eyebrow">Code A &middot; A1 &middot; Part 2 of 2</span>
+      <h1>Driving license reviewer</h1>
+      <p class="sub">Non-professional &middot; 60 questions &middot; passing score 48/60</p>
+    </div>
+    <button id="statsBtn" type="button" class="btn ghost">&#128202; Analytics</button>
+  </div>
+</header>
+
+<section id="quiz" aria-label="Quiz">
+  <div class="road" id="bar" role="progressbar" aria-label="Quiz progress" aria-valuemin="0" aria-valuenow="0"><div id="fill"></div></div>
+  <div class="meta"><span id="prog"></span><span id="score"></span></div>
+  <div id="dots" class="dots" aria-label="Question navigator"></div>
+  <div class="card">
+    <span class="chip" id="topic"></span>
+    <fieldset><legend id="q"></legend><div id="pic"></div><div id="opts"></div></fieldset>
+    <div id="hint" class="hint" hidden></div>
+    <div id="fb" role="status" tabindex="-1"></div>
+    <div class="tools">
+      <button id="back" type="button" class="btn ghost" hidden>&larr; Previous</button>
+      <button id="clue" type="button" class="btn clue">&#128161; Clue</button>
+      <button id="skip" type="button" class="btn ghost">Skip &rarr;</button>
+    </div>
+    <div class="actions">
+      <button id="check" type="button" class="btn primary">Check answer</button>
+      <button id="retry" type="button" class="btn primary" hidden>Try again</button>
+      <button id="show" type="button" class="btn ghost" hidden>Show answer</button>
+      <button id="next" type="button" class="btn primary" hidden>Next question</button>
+    </div>
+  </div>
+  <p class="keys"><kbd>1</kbd>&ndash;<kbd>4</kbd> choose &middot; <kbd>Enter</kbd> check / next &middot; <kbd>H</kbd> clue &middot; <kbd>S</kbd> skip &middot; <kbd>&larr;</kbd> previous</p>
+</section>
+
+<section id="done" class="card" hidden aria-labelledby="rh">
+  <div class="score-head">
+    <div class="ring" id="ring"><b id="pct"></b></div>
+    <div><h2 id="rh" tabindex="-1">Results</h2><p id="sum"></p></div>
+  </div>
+  <div id="passline"></div>
+  <div class="kpis" id="rkp"></div>
+  <ol id="res"></ol>
+  <div class="actions">
+    <button id="again" type="button" class="btn primary" hidden>Retry missed &amp; IDK questions</button>
+    <button id="all" type="button" class="btn ghost">Start over, shuffled</button>
+    <button id="toStats" type="button" class="btn ghost">&#128202; Analytics</button>
+  </div>
+</section>
+
+<section id="stats" class="card" hidden aria-labelledby="sh">
+  <h2 id="sh" tabindex="-1">Your analytics</h2>
+  <p class="muted">Saved in this browser, on this device, across all your sessions.</p>
+  <p class="muted" id="bestline"></p>
+  <div class="kpis" id="kpis"></div>
+  <h3>Accuracy by topic <small>(weakest first)</small></h3>
+  <div id="topics"></div>
+  <h3>Most missed questions</h3>
+  <ul id="hard" class="hard"></ul>
+  <div class="actions">
+    <button id="closeStats" type="button" class="btn primary">&larr; Back</button>
+    <button id="resetStats" type="button" class="btn ghost">Reset analytics</button>
+  </div>
+</section>
+
+<p class="note">Questions, choices and answers are taken from the CarWahe PH "Driving License Reviewer" video (Code A, A1, Part 2 of 2). The correct answer is the one the video marks green. Check anything important against the official LTO handbook.</p>
+</main>
+<script>window.QUIZ={id:"part2",pass:48,total:60};</script>
+<script src="data.js"></script>
+<script src="../app.js"></script>
+</body>
+</html>
